@@ -40,5 +40,22 @@
             <version>2.0.9</version> <!-- Or compatible version -->
         </dependency>
 
+
+            <!-- Cucumber Java (step definitions) -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.23.0</version>
+            <scope>test</scope>
+        </dependency>
+
+            <!-- Cucumber JUnit (to run with JUnit 4) -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.23.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 </project>
