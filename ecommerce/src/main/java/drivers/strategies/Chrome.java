@@ -1,3 +1,4 @@
+package drivers.strategies;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,10 +12,11 @@ public class Chrome implements DriverStrategy {
 
     public WebDriver setStrategy() {
         WebDriverManager.chromedriver().setup();
-        options.setExperimentalOption("useAutomationExtension",false);
-        options.addArguments("--no-sandbox");
+//        options.setExperimentalOption("useAutomationExtension",false);
+//        options.addArguments("--no-sandbox");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        return new ChromeDriver(options);
+//        return new ChromeDriver(options);
+        return driver;
     }
 
     public void quitDriver() {
