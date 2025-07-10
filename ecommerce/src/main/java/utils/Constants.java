@@ -9,4 +9,6 @@ public class Constants {
     public static final String TEST_DATA_FILE = "testdata/testdata.yaml";
 
     public static final String DATA_NOT_FOUND_MESSAGE = "Failed to load test data properties file.";
+
+    public static final String SCREENSHOT_DIR= "ecommerce/target/screenshots";
 }
