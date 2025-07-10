@@ -1,0 +1,11 @@
+user1:
+  name: John Doe
+  email: john.doe@example.com
+  phone: 1234567890
+  password: pass123
+
+user2:
+  name: Jane Smith
+  email: jane.smith@example.com
+  phone: 9876543210
+  password: pass456

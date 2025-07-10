@@ -1,10 +1,12 @@
 Locators/Locator.class
 pages/HomePage.class
+model/UserData.class
 utils/Utilities.class
-utils/ConfigReader.class
+utils/TestDataReader$1.class
 utils/Constants.class
 utils/ScreenshotUtil.class
 utils/FrameworkProperties.class
 drivers/DriverFactory.class
+utils/TestDataReader.class
 pages/LoginPage.class
 drivers/DriverManager.class

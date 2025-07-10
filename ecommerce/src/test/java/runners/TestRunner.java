@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
                 "pretty",
                 "html:target/cucumber-reports.html",
                 "json:target/cucumber.json"
-                // Removed incompatible Allure plugin
         },
         monochrome = true,
+        dryRun = false,
         tags = "@Smoke"
 )
 public class TestRunner {

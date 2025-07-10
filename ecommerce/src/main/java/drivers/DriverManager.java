@@ -7,15 +7,8 @@ public class DriverManager {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            driver=DriverFactory.createInstance();
+            driver = DriverFactory.createInstance();
         }
         return driver;
-    }
-
-    public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
     }
 }

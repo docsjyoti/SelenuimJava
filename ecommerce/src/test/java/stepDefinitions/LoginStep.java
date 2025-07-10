@@ -2,9 +2,10 @@ package stepDefinitions;
 
 import drivers.DriverManager;
 import io.cucumber.java.en.*;
+import model.UserData;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
-import utils.ConfigReader;
+import utils.TestDataReader;
 
 public class LoginStep {
 
@@ -23,14 +24,8 @@ public class LoginStep {
 
     @Then("User logs in using {string}")
     public void user_logs_in_using(String userKey) {
-        String baseKey = "login." + userKey;
-
-        String email = ConfigReader.getProperty(baseKey + ".email");
-        String password = ConfigReader.getProperty(baseKey + ".password");
-        String name = ConfigReader.getProperty(baseKey + ".name");
-        String phone = ConfigReader.getProperty(baseKey + ".phone");
-
-        loginPage.loginWithEmail(email, password, name, phone);
+        UserData user = TestDataReader.getUser(userKey);
+        loginPage.loginWithEmail(user.getEmail(), user.getPassword(), user.getName(), user.getPhone());
     }
 
     @And("User should be logged in successfully")

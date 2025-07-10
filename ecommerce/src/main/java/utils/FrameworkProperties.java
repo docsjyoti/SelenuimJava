@@ -12,12 +12,10 @@ public class FrameworkProperties {
 
             if (input != null) {
                 properties.load(input);
-            } else {
-                throw new RuntimeException(Constants.FILE_NOT_FOUND_MESSAGE);
             }
 
         } catch (Exception e) {
-            throw new RuntimeException(Constants.DATA_NOT_FOUND_MESSAGE, e);
+            throw new RuntimeException(Constants.FILE_NOT_FOUND_MESSAGE, e);
         }
     }
 
