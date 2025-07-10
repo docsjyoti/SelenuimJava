@@ -23,7 +23,6 @@ public class TestHooks {
             if (scenario.isFailed()) {
                 ScreenshotUtil.takeScreenshot(driver, scenario.getName().replaceAll(" ", "_"));
             }
-
             // 🧹 Clear cache and session storage (optional, if needed)
             driver.get("https://www.google.com"); // open a valid page instead of chrome://
             Thread.sleep(2000); // let page load
