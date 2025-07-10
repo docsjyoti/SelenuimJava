@@ -14,8 +14,6 @@ import java.util.Date;
 
 public class ScreenshotUtil {
 
-    private static final String SCREENSHOT_DIR = "screenshots/";
-
     public static void takeScreenshot(WebDriver driver, String screenshotName) {
         try {
             // Timestamp
@@ -23,26 +21,27 @@ public class ScreenshotUtil {
 
             // Take screenshot
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File destFile = new File(SCREENSHOT_DIR + screenshotName + "_" + timeStamp + ".png");
+            File destFile = new File(Constants.SCREENSHOT_DIR + screenshotName + "_" + timeStamp + ".png");
 
             // Copy file to destination
             Files.copy(srcFile.toPath(), destFile.toPath());
 
             System.out.println("📸 Screenshot saved: " + destFile.getAbsolutePath());
+
             // Clean up old screenshots if more than 10
             deleteOldScreenshots();
+
         } catch (IOException e) {
             System.err.println("❌ Failed to save screenshot: " + e.getMessage());
         }
     }
 
     private static void deleteOldScreenshots() {
-        // Make sure screenshot folder exists
-        File folder = new File(SCREENSHOT_DIR);
+        File folder = new File(Constants.SCREENSHOT_DIR);
         File[] screenshots = folder.listFiles((dir, name) -> name.endsWith(".png"));
 
         if (screenshots != null && screenshots.length > 10) {
-            // Sort files by last modified date (oldest first)
+            // Sort by oldest first
             Arrays.sort(screenshots, Comparator.comparingLong(File::lastModified));
 
             for (int i = 0; i < screenshots.length - 10; i++) {
