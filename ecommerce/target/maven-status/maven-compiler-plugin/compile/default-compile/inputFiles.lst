@@ -1,1 +1,10 @@
-/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/driverSetUp.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/Locators/Locator.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/drivers/DriverFactory.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/drivers/DriverManager.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/pages/HomePage.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/pages/LoginPage.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/utils/ConfigReader.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/utils/Constants.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/utils/FrameworkProperties.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/utils/ScreenshotUtil.java
+/Users/jyoti/Intellij/sleniumProject/SeleniumJava/ecommerce/src/main/java/utils/Utilities.java

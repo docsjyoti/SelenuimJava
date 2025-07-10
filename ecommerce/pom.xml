@@ -49,12 +49,13 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure Cucumber 6 Adapter -->
+        <!-- for screenshots -->
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber6-jvm</artifactId>
-            <version>2.13.9</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.15.1</version>
         </dependency>
+
 
         <!-- Surefire dependency to run tests -->
         <dependency>
@@ -68,6 +69,25 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
             <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>messages</artifactId>
+            <version>27.2.0</version> <!-- Match your cucumber-core expected version -->
+        </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.23.0</version>
+        </dependency>
+
+        <!-- Optional formatters -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>html-formatter</artifactId>
+            <version>21.10.1</version>
         </dependency>
 
     </dependencies>

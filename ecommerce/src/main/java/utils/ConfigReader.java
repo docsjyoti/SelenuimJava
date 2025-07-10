@@ -1,23 +1,25 @@
 package utils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigReader {
-    private static Properties prop;
+
+    private static final Properties properties;
 
     static {
         try {
-            prop = new Properties();
-            FileInputStream input = new FileInputStream(Constants.TEST_DATA_FILE);
-            prop.load(input);
-        } catch (IOException e) {
-            e.printStackTrace();
+            properties = new Properties();
+            String dataFileName = Constants.TEST_DATA_FILE;
+
+            InputStream inputStream = ConfigReader.class.getClassLoader().getResourceAsStream(dataFileName);
+            properties.load(inputStream);
+        } catch (Exception e) {
+            throw new RuntimeException(Constants.DATA_NOT_FOUND_MESSAGE, e);
         }
     }
 
-    public static String get(String key) {
-        return prop.getProperty(key);
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
     }
 }
