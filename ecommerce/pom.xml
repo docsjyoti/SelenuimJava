@@ -123,6 +123,12 @@
                     </includes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>cucumber-reporting</artifactId>
+                <version>5.7.0</version>
+            </plugin>
+
         </plugins>
     </build>
 
