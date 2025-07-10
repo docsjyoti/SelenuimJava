@@ -1,31 +1,29 @@
 package utils;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class FrameworkProperties {
-    private String result= "";
-    private InputStream inputStream;
+    private static Properties properties;
 
-    public String getProperty(String key){
+    static {
         try {
-            Properties properties= new Properties();
-            String propFileName= Constants.PROP_FILE_NAME;
+            properties = new Properties();
+            String propFileName = Constants.PROP_FILE_NAME;
 
-            inputStream= getClass().getClassLoader().getResourceAsStream(propFileName);
+            InputStream inputStream = FrameworkProperties.class.getClassLoader().getResourceAsStream(propFileName);
 
-            if(inputStream != null)
+            if (inputStream != null) {
                 properties.load(inputStream);
-            else
-                throw new FileNotFoundException(Constants.FILE_NOT_FOUND_MESSAGE);
-
-            String propertyValue= properties.getProperty(key);
-            this.result= propertyValue;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            } else {
+                throw new RuntimeException(Constants.FILE_NOT_FOUND_MESSAGE);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to load properties file: " + e.getMessage(), e);
         }
-        return result;
+    }
+
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
     }
 }
