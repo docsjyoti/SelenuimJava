@@ -3,7 +3,7 @@ package hooks;
 import drivers.DriverManager;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
-import io.cucumber.java.Scenario; // ✅ Correct import
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import utils.ScreenshotUtil;
