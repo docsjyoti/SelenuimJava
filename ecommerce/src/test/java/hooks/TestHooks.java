@@ -4,8 +4,9 @@ import drivers.DriverManager;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import utils.ScreenshotUtil;
 
 public class TestHooks {
 
@@ -19,9 +20,9 @@ public class TestHooks {
         WebDriver driver = DriverManager.getDriver();
 
         if (scenario.isFailed()) {
-            ScreenshotUtil.takeScreenshot(driver, scenario.getName());
+            byte[] screenshot = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
         }
-
         if (driver != null) {
             driver.quit();  // Directly quit the driver if not null
         }
