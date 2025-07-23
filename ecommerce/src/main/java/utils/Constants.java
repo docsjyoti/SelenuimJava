@@ -10,5 +10,5 @@ public class Constants {
 
     public static final String DATA_NOT_FOUND_MESSAGE = "Failed to load test data properties file.";
 
-    public static final String SCREENSHOT_DIR= "ecommerce/target/screenshots";
+    public static final String SCREENSHOT_DIR= "target/screenshots/";
 }

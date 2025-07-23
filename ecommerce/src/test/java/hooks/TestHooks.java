@@ -7,24 +7,33 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import utils.ScreenshotUtil;
 
 public class TestHooks {
 
     @Before
     public void setUp() {
-        DriverManager.getDriver().manage().window().maximize();
+        WebDriver driver = DriverManager.getDriver();
+        driver.manage().window().maximize();
+        System.out.println("Allure Results Directory: " + System.getProperty("allure.results.directory"));
     }
 
     @After
     public void tearDown(Scenario scenario) {
         WebDriver driver = DriverManager.getDriver();
 
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", scenario.getName());
-        }
         if (driver != null) {
-            driver.quit();  // Directly quit the driver if not null
+            try {
+                if (scenario.isFailed()) {
+                    byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                    scenario.attach(screenshotBytes, "image/png", scenario.getName());
+                    ScreenshotUtil.takeScreenshot(driver, scenario.getName().replaceAll("[^a-zA-Z0-9-_]", "_"));
+                }
+            } catch (Exception e) {
+                System.err.println("Error taking screenshot: " + e.getMessage());
+            } finally {
+                DriverManager.quitDriver();
+            }
         }
     }
 }

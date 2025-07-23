@@ -1,9 +1,11 @@
 package utils;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,19 +18,26 @@ public class ScreenshotUtil {
 
     public static void takeScreenshot(WebDriver driver, String screenshotName) {
         try {
+            // Ensure screenshot directory exists
+            new File(Constants.SCREENSHOT_DIR).mkdirs();
+
             // Timestamp
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 
-            // Take screenshot
+            // Take screenshot as file
             File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File destFile = new File(Constants.SCREENSHOT_DIR + screenshotName + "_" + timeStamp + ".png");
 
-            // Copy file to destination
+            // Save file locally
             Files.copy(srcFile.toPath(), destFile.toPath());
 
             System.out.println("📸 Screenshot saved: " + destFile.getAbsolutePath());
 
-            // Clean up old screenshots if more than 10
+            // Attach to Allure
+            byte[] screenshotBytes = Files.readAllBytes(destFile.toPath());
+            Allure.addAttachment("Screenshot - " + screenshotName, new ByteArrayInputStream(screenshotBytes));
+
+            // Delete older ones if > 10
             deleteOldScreenshots();
 
         } catch (IOException e) {

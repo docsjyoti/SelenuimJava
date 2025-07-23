@@ -1,9 +1,9 @@
 package stepDefinitions;
 
+import drivers.DriverManager;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
-import drivers.DriverManager;
 import org.junit.Assert;
 
 public class HomeStep {
