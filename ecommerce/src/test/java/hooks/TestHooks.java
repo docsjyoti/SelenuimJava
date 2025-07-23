@@ -4,10 +4,13 @@ import drivers.DriverManager;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import utils.ScreenshotUtil;
+
+import java.io.ByteArrayInputStream;
 
 public class TestHooks {
 
@@ -26,7 +29,7 @@ public class TestHooks {
             try {
                 if (scenario.isFailed()) {
                     byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                    scenario.attach(screenshotBytes, "image/png", scenario.getName());
+                    Allure.addAttachment("Failed Screenshot", new ByteArrayInputStream(screenshotBytes));
                     ScreenshotUtil.takeScreenshot(driver, scenario.getName().replaceAll("[^a-zA-Z0-9-_]", "_"));
                 }
             } catch (Exception e) {
