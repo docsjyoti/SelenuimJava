@@ -8,14 +8,13 @@ import utils.FrameworkProperties;
 
 public class DriverFactory {
     public static WebDriver createInstance() {
-
-        WebDriverManager.chromedriver().setup();
-        ChromeDriver driver = new ChromeDriver();
-
         String browser = FrameworkProperties.getProperty("browser");
+
         if (browser.equalsIgnoreCase("chrome")) {
-            return driver;
+            WebDriverManager.chromedriver().setup();
+            return new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();
         } else {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
