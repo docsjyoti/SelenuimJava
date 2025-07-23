@@ -12,7 +12,10 @@ import org.junit.runner.RunWith;
                 "pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
-        tags = "@Smoke"
+        tags = "@Smoke",
+        dryRun = false,           // true: checks step defs mapping without running
+        monochrome = true,        // cleaner console output
+        publish = false
 )
 public class TestRunner {
 }
